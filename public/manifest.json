@@ -1,6 +1,6 @@
 {
-  "short_name": "awesome-template-ts",
-  "name": "awesome-template-ts",
+  "short_name": "ts-simple",
+  "name": "ts-simple",
   "icons": [
     {
       "src": "favicon.ico",
