@@ -28,7 +28,9 @@ class Store {
       .then(response => {
         // handle success
         runInAction(() => {
+            this.selectedRepo.set(null)
           this.repos.clear()
+
           for (let x of response.data.items) {
             this.repos.set(x.id, x)
           }
