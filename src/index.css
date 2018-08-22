@@ -64,6 +64,11 @@ div::-webkit-scrollbar-thumb {
   /*margin: 5px;*/
 }
 
+.sidebarHeader {
+  background-color: #393f4f;
+  padding: 5px;
+}
+
 .header {
   background-color: #313543;
   padding: 5px;

@@ -1,24 +1,22 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 import "./index.css"
+import SideBar from './SideBar'
+import Home from './Home'
+import Details from './Details'
 
 class App extends React.Component<any, any> {
   render() {
     return (
       <div className="flex-grid">
         <div className="col">
-            <div className="item">
-                <div className="header">hello</div>
-                <div className="contentHolder">
-                    <div className="content">content</div>
-                </div>
-            </div>
+            <SideBar/>
         </div>
         <div className="col">
-            <div className="item">cool</div>
+            <Home/>
         </div>
         <div className="col">
-            <div className="item">great</div>
+            <Details/>
         </div>
       </div>
     )
