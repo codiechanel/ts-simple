@@ -17,6 +17,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import HomeIcon from "@material-ui/icons/Home"
 import Settings from "@material-ui/icons/Settings"
+import {observable} from "mobx"
 
 // account_box
 
@@ -33,15 +34,24 @@ const styles = {
   },
   headerText: {
     marginLeft: 10,
-      flex: 1
+    flex: 1
   },
   avatar: {
     backgroundColor: "inherit",
-      // fontSize: ".5rem",
-      width: 25,
-      height: 25,
+    // fontSize: ".5rem",
+    width: 25,
+    height: 25
   }
 }
+
+class HomeStore {
+    // repos = observable.shallow(new Map());
+    showOptions = observable.box(false)
+  setOption(val) {
+      this.showOptions.set(val)
+  }
+}
+const homeStore = new HomeStore()
 
 const url =
   "https://api.github.com/search/repositories?l=javascript&q=stars%3A%3E1&s=stars&type=Repositories"
@@ -51,43 +61,21 @@ class Home extends React.Component<any, any> {
     query: "",
     list: []
   }
-  componentDidMount() {
-    // axios.get(url)
-    //     .then((response) => {
-    //         // handle success
-    //         console.log(response.data.items);
-    //         let newList = [];
-    //         for (let x of response.data.items) {
-    //             newList.push({
-    //                 name: x.name,
-    //                 id: x.id,
-    //             });
-    //
-    //         }
-    //         this.setState({ list: newList });
-    //     })
-    //     .catch(function (error) {
-    //         // handle error
-    //         console.log(error);
-    //     })
-    //     .then(function () {
-    //         // always executed
-    //     });
-  }
+  componentDidMount() {}
   render() {
     console.log("render")
     let arr = this.props.store.repos.values()
-    let size = this.props.store.repos.size
-    // console.log('arrayers', arr, Array.from(arr))
-    /*
-        Instead, use Array.from(observableMap.values()).map(fn) or mobx.values(observableMap).map(fn)
+
+    /**
+     * Instead, use Array.from(observableMap.values()).map(fn)
+     * or mobx.values(observableMap).map(fn)
      */
 
     let list: any = Array.from(arr)
-    console.log("arrayers", list)
-    // for (const x of arr) {
-    //     console.log('arr', x)
-    // }
+      let optionsUI = null
+      if (homeStore.showOptions.get()) {
+          optionsUI = <div style={{backgroundColor:"#393f4f", padding: 5}}>Great</div>
+      }
 
     return (
       <div className="item">
@@ -98,39 +86,36 @@ class Home extends React.Component<any, any> {
           <Typography variant="body2" color="inherit" style={styles.headerText}>
             Home
           </Typography>
-            <Avatar style={styles.avatar}>
-                <Settings/>
-            </Avatar>
+          <Avatar style={styles.avatar} onClick={()=> {
+            let curr = homeStore.showOptions.get()
+              homeStore.setOption(!curr)
+            console.log('ss')
+          }} >
+            <Settings  />
+          </Avatar>
         </div>
-        {/*<AppBar position="static">*/}
-        {/*<Toolbar>*/}
-        {/*<IconButton style={styles.menuButton} color="inherit" aria-label="Menu">*/}
-        {/*<MenuIcon />*/}
-        {/*</IconButton>*/}
-        {/*<Typography variant="title" color="inherit" style={styles.flex}>*/}
-        {/*News*/}
-        {/*</Typography>*/}
-        {/*<Button color="inherit">Login</Button>*/}
-        {/*</Toolbar>*/}
-        {/*</AppBar>*/}
+          {optionsUI}
         <div className="contentHolder">
+
           <div className="content">
-            <List component="nav" style={{color:"white"}}>
+            <List component="nav" style={{ color: "white" }}>
               {list.map(l => (
-                <ListItem style={{color:"white"}} button divider key={l.id} onClick={()=> {
-                    console.log('click')
+                <ListItem
+                  style={{ color: "white" }}
+                  button
+                  divider
+                  key={l.id}
+                  onClick={() => {
+                    console.log("click")
                     this.props.store.selectRepo(l.id)
-                }}>
-                  <ListItemText primary={l.name} primaryTypographyProps={{color: "inherit"}} />
+                  }}
+                >
+                  <ListItemText
+                    primary={l.name}
+                    primaryTypographyProps={{ color: "inherit" }}
+                  />
                 </ListItem>
               ))}
-
-              {/*<ListItem button divider>*/}
-              {/*<ListItemText primary="Trash" />*/}
-              {/*</ListItem>*/}
-              {/*<ListItem button component="a" href="#simple-list">*/}
-              {/*<ListItemText primary="Spam" />*/}
-              {/*</ListItem>*/}
             </List>
           </div>
         </div>
