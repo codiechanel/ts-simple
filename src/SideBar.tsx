@@ -11,7 +11,10 @@ import Build from "@material-ui/icons/Build"
 
 import Avatar from "@material-ui/core/Avatar"
 import HomeIcon from "../node_modules/@material-ui/icons/Home"
+import SearchIcon from "../node_modules/@material-ui/icons/Search"
 import Typography from "@material-ui/core/Typography"
+import TextField from "@material-ui/core/TextField"
+import Input from "@material-ui/core/Input"
 
 let newList = []
 newList.push({ title: "javascript" })
@@ -23,6 +26,17 @@ newList.push({ title: "node" })
 const styles = {
     headerText: {
         marginLeft: 10
+    },
+    searchIcon: {
+        backgroundColor: "inherit",
+        // fontSize: ".5rem",
+        color: "#606984",
+        width: 25,
+        height: 25,
+    },
+    textField: {
+        flex: 1
+
     },
 
     avatar: {
@@ -55,13 +69,33 @@ class SideBar extends React.Component<any, any> {
                 <Build/>
             </Avatar>
         </div>
+          <div className="searchBar">
+              {/*<TextField*/}
+                  {/*id="uncontrolled"*/}
+                  {/*// label="Uncontrolled"*/}
+                  {/*defaultValue="foo"*/}
+                  {/*style={styles.textField}*/}
+                  {/*// className={classes.textField}*/}
+                  {/*// margin="normal"*/}
+              {/*/>*/}
+              <Input
+                  placeholder="Search"
+                  disableUnderline
+                  // margin={"dense"}
+                  // className={classes.input}
+                  style={styles.textField}
+                  // inputProps={{
+                  //     'aria-label': 'Description',
+                  // }}
+              />
+              <Avatar style={styles.searchIcon}>
+                  <SearchIcon/>
+              </Avatar>
+          </div>
 
         <div className="contentHolder">
           <div className="content">
-            {" "}
-            <Button variant="contained" color="primary">
-              Hello World
-            </Button>
+
             <List component="nav">
               {newList.map(l => (
                 <ListItem
