@@ -7,13 +7,13 @@ import Details from "./Details"
 import store from "./MyStore"
 class App extends React.Component<any, any> {
   componentDidMount() {
-    store.loadRepos()
+    // store.loadRepos()
   }
   render() {
     return (
       <div className="flex-grid">
         <div className="col">
-          <SideBar />
+          <SideBar store={store} />
         </div>
         <div className="col">
           <Home store={store} />
