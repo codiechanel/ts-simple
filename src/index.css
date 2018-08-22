@@ -59,7 +59,7 @@ div::-webkit-scrollbar-thumb {
   flex: 1;
   height: 100%;
   flex-direction: column;
-  background-color: antiquewhite;
+  /*background-color: antiquewhite;*/
   /*padding: 10px;*/
   /*margin: 5px;*/
 }
@@ -90,8 +90,20 @@ div::-webkit-scrollbar-thumb {
   padding: 5px;
   flex: 1;
 }
+.detailsContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /*justify-content: center;*/
+    /*background-color: blue;*/
+    padding: 10px;
+    height: 100%;
+    /*flex: 1;*/
+}
 
 .content {
+    /*align-items: center;*/
+
 
   height: 100%;
   /*flex: 1;*/

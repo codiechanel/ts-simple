@@ -1,6 +1,6 @@
 import * as React from "react"
 import { observer } from "mobx-react"
-import Avatar from '@material-ui/core/Avatar';
+import Avatar from "@material-ui/core/Avatar"
 import * as style from "./repoStats.module.css"
 
 class RepoStats extends React.Component<any, any> {
@@ -17,10 +17,10 @@ class RepoStats extends React.Component<any, any> {
         width: 100
         // textAlign: "center"
       },
-        bigAvatar: {
-            width: 60,
-            height: 60,
-        },
+      bigAvatar: {
+        width: 60,
+        height: 60
+      }
     }
     return (
       <div className={style.cool}>
@@ -39,7 +39,7 @@ class RepoStats extends React.Component<any, any> {
             <span
               style={{
                 color: "#fff",
-                  display: "block",
+                display: "block",
                 textAlign: "center"
               }}
             >
@@ -58,17 +58,17 @@ class RepoStats extends React.Component<any, any> {
           >
             forks
           </span>
-            <strong>
+          <strong>
             <span
-                style={{
-                    color: "#fff",
-                    display: "block",
-                    textAlign: "center"
-                }}
+              style={{
+                color: "#fff",
+                display: "block",
+                textAlign: "center"
+              }}
             >
               {this.props.forks}
             </span>
-            </strong>
+          </strong>
         </div>
       </div>
     )
@@ -78,12 +78,13 @@ class RepoStats extends React.Component<any, any> {
 @observer
 class Details extends React.Component<any, any> {
   render() {
-      const styles = {
-          bigAvatar: {
-              width: 60,
-              height: 60,
-          },
+    const styles = {
+      bigAvatar: {
+        width: 60,
+        height: 60,
+
       }
+    }
     let val = this.props.store.selectedRepo.get()
     let item = this.props.store.repos.get(val)
     console.log("val", val, item)
@@ -100,17 +101,20 @@ class Details extends React.Component<any, any> {
         <div className="item">
           <div className="header">Details</div>
           <div className="contentHolder">
-            <div className="content">
-                <Avatar
-                    alt={item.name}
-                    src={item.owner.avatar_url}
-                    style={styles.bigAvatar}
-                />
-                <div style={{fontSize:20}}> {item.name}</div>
-                <div style={{color:"#2b90d9"}}> @{item.owner.login}</div>
+            <div className="detailsContent">
+              <Avatar
+                alt={item.name}
+                src={item.owner.avatar_url}
+                style={styles.bigAvatar}
+              />
+              <div style={{ fontSize: 20,  textAlign:"center" }}> {item.name}</div>
+              <div style={{ color: "#2b90d9", textAlign:"center" }}> @{item.owner.login}</div>
 
-              <div> {item.description}</div>
-              <RepoStats stars={item.stargazers_count.toLocaleString()} forks={item.forks_count.toLocaleString()} />
+              <div style={{  textAlign:"center" }}> {item.description}</div>
+              <RepoStats
+                stars={item.stargazers_count.toLocaleString()}
+                forks={item.forks_count.toLocaleString()}
+              />
             </div>
           </div>
         </div>
