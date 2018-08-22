@@ -7,7 +7,12 @@ class App extends React.Component<any, any> {
     return (
       <div className="flex-grid">
         <div className="col">
-            <div className="item">hello</div>
+            <div className="item">
+                <div className="header">hello</div>
+                <div className="contentHolder">
+                    <div className="content">content</div>
+                </div>
+            </div>
         </div>
         <div className="col">
             <div className="item">cool</div>
