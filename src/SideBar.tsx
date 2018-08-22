@@ -34,7 +34,8 @@ const styles = {
         height: 25,
     },
     textField: {
-        flex: 1
+        flex: 1,
+        color: "#9baec8"
 
     },
 
@@ -95,7 +96,7 @@ class SideBar extends React.Component<any, any> {
                       this.props.store.searchRepo(l.title)
                   }}
                 >
-                  <ListItemText primary={l.title} />
+                  <ListItemText primary={l.title} primaryTypographyProps={{color: "inherit"}}  />
                 </ListItem>
               ))}
             </List>

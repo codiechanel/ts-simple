@@ -115,13 +115,13 @@ class Home extends React.Component<any, any> {
         {/*</AppBar>*/}
         <div className="contentHolder">
           <div className="content">
-            <List component="nav">
+            <List component="nav" style={{color:"white"}}>
               {list.map(l => (
-                <ListItem button divider key={l.id} onClick={()=> {
+                <ListItem style={{color:"white"}} button divider key={l.id} onClick={()=> {
                     console.log('click')
                     this.props.store.selectRepo(l.id)
                 }}>
-                  <ListItemText primary={l.name} />
+                  <ListItemText primary={l.name} primaryTypographyProps={{color: "inherit"}} />
                 </ListItem>
               ))}
 
