@@ -165,7 +165,7 @@ class Details extends React.Component<any, any> {
               />
             </div>
             <div style={{ backgroundColor: "#1f232b", padding: 5 }}>
-              Repositories wow
+              Repositories
             </div>
               {/*<Card >*/}
                   {/*<CardContent>*/}
