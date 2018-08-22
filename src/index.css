@@ -33,7 +33,7 @@ div::-webkit-scrollbar-thumb {
   display: flex;
   flex: 1;
   background-color: #191b22;
-  padding: 20px;
+  padding: 10px;
 }
 
 .flex-grid {
@@ -44,13 +44,16 @@ div::-webkit-scrollbar-thumb {
 
 }
 .col {
+  background-color: aliceblue;
   flex: 1;
-  padding-right: 10px;
+  /*padding-right: 10px;*/
+  margin-right: 10px;
   color: white;
 }
 
 .item {
   flex: 1;
+  height: 100%;
   background-color: #282c37;
   padding: 10px;
   /*margin: 5px;*/
