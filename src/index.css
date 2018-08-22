@@ -32,15 +32,28 @@ div::-webkit-scrollbar-thumb {
   display: -ms-flexbox;
   display: flex;
   flex: 1;
+  background-color: #191b22;
+  padding: 20px;
 }
 
 .flex-grid {
   display: flex;
   flex: 1;
-  background-color: aqua;
+  /*padding: 10px;*/
+
+
 }
 .col {
   flex: 1;
+  padding-right: 10px;
+  color: white;
+}
+
+.item {
+  flex: 1;
+  background-color: #282c37;
+  padding: 10px;
+  /*margin: 5px;*/
 }
 
 /*.container {*/
