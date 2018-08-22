@@ -6,6 +6,17 @@ import Typography from "@material-ui/core/Typography"
 import HomeIcon from "@material-ui/icons/Home"
 import DetailsIcon from "@material-ui/icons/Details"
 import Settings from "../node_modules/@material-ui/icons/Settings"
+import List from "@material-ui/core/List"
+import ListItem from "@material-ui/core/ListItem"
+import ListItemText from "@material-ui/core/ListItemText"
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+let newList = []
+newList.push({ title: "javascript" })
+newList.push({ title: "java" })
+// newList.push({ title: "python" })
+
 
 class DetailsHeader extends React.Component<any, any> {
   render() {
@@ -141,11 +152,9 @@ class Details extends React.Component<any, any> {
                 style={styles.bigAvatar}
               />
               <div style={{ fontSize: 20, textAlign: "center" }}>
-                {" "}
                 {item.name}
               </div>
               <div style={{ color: "#2b90d9", textAlign: "center" }}>
-                {" "}
                 @{item.owner.login}
               </div>
 
@@ -154,6 +163,36 @@ class Details extends React.Component<any, any> {
                 stars={item.stargazers_count.toLocaleString()}
                 forks={item.forks_count.toLocaleString()}
               />
+            </div>
+            <div style={{ backgroundColor: "#1f232b", padding: 5 }}>
+              Repositories wow
+            </div>
+              {/*<Card >*/}
+                  {/*<CardContent>*/}
+                      {/*<List >*/}
+                          {/*{newList.map(l => (*/}
+                              {/*<ListItem button divider key={l.title}>*/}
+                                  {/*<ListItemText*/}
+                                      {/*primary={l.title}*/}
+                                      {/*primaryTypographyProps={{ color: "inherit" }}*/}
+                                  {/*/>*/}
+                              {/*</ListItem>*/}
+                          {/*))}*/}
+                      {/*</List>*/}
+                  {/*</CardContent>*/}
+
+              {/*</Card>*/}
+            <div>
+              <List >
+                {newList.map(l => (
+                  <ListItem button divider key={l.title}>
+                    <ListItemText
+                      primary={l.title}
+                      primaryTypographyProps={{ color: "inherit" }}
+                    />
+                  </ListItem>
+                ))}
+              </List>
             </div>
           </div>
         </div>

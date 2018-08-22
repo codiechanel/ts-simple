@@ -104,10 +104,12 @@ div::-webkit-scrollbar-thumb {
 .contentHolder {
   background-color: #282c37;
 
-  /*height: 100%;*/
+  height: 100%;
   overflow-y: auto;
   /*overflow: scroll;*/
-  padding: 5px;
+  /*padding: 5px;*/
+    display: flex;
+    flex-direction: column;
   flex: 1;
 }
 .detailsContent {
@@ -117,7 +119,7 @@ div::-webkit-scrollbar-thumb {
     /*justify-content: center;*/
     /*background-color: blue;*/
     padding: 10px;
-    height: 100%;
+    /*height: 100%;*/
     /*flex: 1;*/
 }
 
