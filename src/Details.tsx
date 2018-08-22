@@ -2,6 +2,40 @@ import * as React from "react"
 import { observer } from "mobx-react"
 import Avatar from "@material-ui/core/Avatar"
 import * as style from "./repoStats.module.css"
+import Typography from "@material-ui/core/Typography"
+import HomeIcon from "@material-ui/icons/Home"
+import DetailsIcon from "@material-ui/icons/Details"
+import Settings from "../node_modules/@material-ui/icons/Settings"
+
+class DetailsHeader extends React.Component<any, any> {
+  render() {
+    const styles = {
+      avatar: {
+        backgroundColor: "inherit",
+        // fontSize: ".5rem",
+        width: 25,
+        height: 25
+      },
+      headerText: {
+        marginLeft: 10,
+        flex: 1
+      }
+    }
+    return (
+      <div className="detailsHeader">
+        <Avatar style={styles.avatar}>
+          <DetailsIcon />
+        </Avatar>
+        <Typography variant="body2" color="inherit" style={styles.headerText}>
+          Details
+        </Typography>
+        <Avatar style={styles.avatar}>
+          <Settings />
+        </Avatar>
+      </div>
+    )
+  }
+}
 
 class RepoStats extends React.Component<any, any> {
   render() {
@@ -81,8 +115,7 @@ class Details extends React.Component<any, any> {
     const styles = {
       bigAvatar: {
         width: 60,
-        height: 60,
-
+        height: 60
       }
     }
     let val = this.props.store.selectedRepo.get()
@@ -90,7 +123,7 @@ class Details extends React.Component<any, any> {
     console.log("val", val, item)
     let content = (
       <div className="item">
-        <div className="header">Details</div>
+        <DetailsHeader />
         <div className="contentHolder">
           <div className="content">content</div>
         </div>
@@ -99,7 +132,7 @@ class Details extends React.Component<any, any> {
     if (item) {
       content = (
         <div className="item">
-          <div className="header">Details</div>
+          <DetailsHeader />
           <div className="contentHolder">
             <div className="detailsContent">
               <Avatar
@@ -107,10 +140,16 @@ class Details extends React.Component<any, any> {
                 src={item.owner.avatar_url}
                 style={styles.bigAvatar}
               />
-              <div style={{ fontSize: 20,  textAlign:"center" }}> {item.name}</div>
-              <div style={{ color: "#2b90d9", textAlign:"center" }}> @{item.owner.login}</div>
+              <div style={{ fontSize: 20, textAlign: "center" }}>
+                {" "}
+                {item.name}
+              </div>
+              <div style={{ color: "#2b90d9", textAlign: "center" }}>
+                {" "}
+                @{item.owner.login}
+              </div>
 
-              <div style={{  textAlign:"center" }}> {item.description}</div>
+              <div style={{ textAlign: "center" }}> {item.description}</div>
               <RepoStats
                 stars={item.stargazers_count.toLocaleString()}
                 forks={item.forks_count.toLocaleString()}

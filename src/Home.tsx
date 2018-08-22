@@ -16,7 +16,10 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import HomeIcon from "@material-ui/icons/Home"
-import { log } from "util"
+import Settings from "@material-ui/icons/Settings"
+
+// account_box
+
 const styles = {
   root: {
     flexGrow: 1
@@ -29,12 +32,17 @@ const styles = {
     marginRight: 20
   },
   headerText: {
-    marginLeft: 10
+    marginLeft: 10,
+      flex: 1
   },
   avatar: {
-    backgroundColor: "inherit"
+    backgroundColor: "inherit",
+      // fontSize: ".5rem",
+      width: 25,
+      height: 25,
   }
 }
+
 const url =
   "https://api.github.com/search/repositories?l=javascript&q=stars%3A%3E1&s=stars&type=Repositories"
 @observer
@@ -87,9 +95,12 @@ class Home extends React.Component<any, any> {
           <Avatar style={styles.avatar}>
             <HomeIcon />
           </Avatar>
-          <Typography variant="title" color="inherit" style={styles.headerText}>
+          <Typography variant="body2" color="inherit" style={styles.headerText}>
             Home
           </Typography>
+            <Avatar style={styles.avatar}>
+                <Settings/>
+            </Avatar>
         </div>
         {/*<AppBar position="static">*/}
         {/*<Toolbar>*/}
