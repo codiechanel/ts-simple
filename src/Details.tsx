@@ -12,6 +12,7 @@ import ListItemText from "@material-ui/core/ListItemText"
 import Card from "@material-ui/core/Card"
 import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
+import Contributors from "./Contributors"
 let newList = []
 newList.push({ title: "javascript" })
 newList.push({ title: "java" })
@@ -71,6 +72,7 @@ class RepoStats extends React.Component<any, any> {
         height: 60
       }
     }
+
     return (
       <div className={style.cool}>
         <div className={style.boxes}>
@@ -119,6 +121,29 @@ class RepoStats extends React.Component<any, any> {
             </span>
           </strong>
         </div>
+        <div className={style.boxes}>
+          <span
+            style={{
+              display: "block",
+              textTransform: "uppercase",
+              fontSize: 11,
+              textAlign: "center"
+            }}
+          >
+            watchers
+          </span>
+          <strong>
+            <span
+              style={{
+                color: "#fff",
+                display: "block",
+                textAlign: "center"
+              }}
+            >
+              {this.props.watchers}
+            </span>
+          </strong>
+        </div>
       </div>
     )
   }
@@ -155,16 +180,15 @@ class Details extends React.Component<any, any> {
                 src={item.owner.avatar_url}
                 style={styles.bigAvatar}
               />
-              <div style={{ fontSize: 20 }}>
-                {item.name}
-              </div>
+              <div style={{ fontSize: 20 }}>{item.name}</div>
               <div style={{ color: "#2b90d9" }}>@{item.owner.login}</div>
 
-              <div > {item.description}</div>
-                <RepoStats
-                    stars={item.stargazers_count.toLocaleString()}
-                    forks={item.forks_count.toLocaleString()}
-                />
+              <div> {item.description}</div>
+              <RepoStats
+                stars={item.stargazers_count.toLocaleString()}
+                forks={item.forks_count.toLocaleString()}
+                watchers={item.score.toLocaleString()}
+              />
             </div>
 
             <div style={{ backgroundColor: "#1f232b", padding: 5 }}>
@@ -172,16 +196,7 @@ class Details extends React.Component<any, any> {
             </div>
 
             <div style={{ display: "flex", flex: 1 }}>
-              <List>
-                {newList.map(l => (
-                  <ListItem button divider key={l.title}>
-                    <ListItemText
-                      primary={l.title}
-                      primaryTypographyProps={{ color: "inherit" }}
-                    />
-                  </ListItem>
-                ))}
-              </List>
+              <Contributors store={this.props.store} />
             </div>
           </div>
         </div>

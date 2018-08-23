@@ -23,6 +23,7 @@ import StarIcon from "@material-ui/icons/StarRate"
 import UndoIcon from "@material-ui/icons/Undo"
 import MoreIcon from "@material-ui/icons/MoreHoriz"
 import RefreshIcon from "@material-ui/icons/Refresh"
+import PlusOneIcon from "@material-ui/icons/PlusOne"
 import Settings from "@material-ui/icons/Settings"
 import FormGroup from "@material-ui/core/FormGroup"
 import FormControlLabel from "@material-ui/core/FormControlLabel"
@@ -189,6 +190,9 @@ class Home extends React.Component<any, any> {
                       <Avatar style={styles.itemIcon}>
                         <RefreshIcon />
                       </Avatar>
+                        <Avatar style={styles.itemIcon}>
+                            <PlusOneIcon/>
+                        </Avatar>
                       <Avatar style={styles.itemIcon}>
                         <LaunchIcon />
                       </Avatar>

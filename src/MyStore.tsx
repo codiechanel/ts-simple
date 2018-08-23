@@ -4,6 +4,7 @@ import axios from "axios" // 3.4.1
 class Store {
   // repos = observable.shallow(new Map());
   repos = observable.map(new Map(), { deep: false })
+    contributors = observable.map(new Map(), { deep: false })
   selectedRepo = observable.box(null)
   selectedQuery = observable.box(null)
 
@@ -13,10 +14,40 @@ class Store {
     })
   }
 
+  getContributors(fullname) {
+      const url = `https://api.github.com/repos/${fullname}/contributors`
+      axios
+          .get(url)
+          .then(response => {
+              // handle success
+              console.log(response.data)
+              runInAction(() => {
+                  // this.selectedRepo.set(null)
+                  this.contributors.clear()
+
+                  for (let x of response.data) {
+                      console.log('hmm', x)
+                      this.contributors.set(x.login, x)
+                  }
+              })
+          })
+          .catch(function(error) {
+              // handle error
+              console.log(error)
+          })
+          .then(function() {
+              // always executed
+          })
+
+  }
+
   selectRepo(id) {
     runInAction(() => {
       this.selectedRepo.set(id)
     })
+      let val = this.repos.get(id)
+      this.getContributors(val.full_name)
+      console.log("yeah", val)
   }
 
   searchRepo(query) {
