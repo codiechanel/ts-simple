@@ -38,23 +38,30 @@ class Store {
 
   selectRepo(id) {
     runInAction(() => {
+        this.contributors.clear()
       this.selectedRepo.set(id)
     })
     let val = this.repos.get(id)
     this.getContributors(val.full_name)
   }
 
-  searchRepo(query) {
-    console.log(query)
+  searchRepo(language, query = null) {
+    console.log(language)
     // const url = `https://api.github.com/search/repositories?language=${query}&q=stars%3A%3E1&s=stars&type=Repositories`
-    const url = `https://api.github.com/search/repositories?q=stars%3A%3E1+language:${query}&sort=stars&order=desc`
+    let url = `https://api.github.com/search/repositories?q=stars%3A%3E1+language:${language}&sort=stars&order=desc`
+    if (query) {
+      url = `https://api.github.com/search/repositories?q=${query}+language:${language}&sort=stars&order=desc`
+    }
+
     axios
       .get(url)
       .then(response => {
         // handle success
         runInAction(() => {
-          this.selectedRepo.set(null)
+
+          this.contributors.clear()
           this.repos.clear()
+            this.selectedRepo.set(null)
 
           for (let x of response.data.items) {
             this.repos.set(x.id, x)

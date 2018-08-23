@@ -7,7 +7,7 @@ import Details from "./Details"
 import store from "./MyStore"
 class App extends React.Component<any, any> {
   componentDidMount() {
-    // store.loadRepos()
+    store.searchRepo("javascript", "podcast")
   }
   render() {
     return (

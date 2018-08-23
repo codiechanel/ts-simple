@@ -29,29 +29,57 @@ newList.push({ title: "html" })
 newList.push({ title: "css" })
 
 const styles = {
-    headerText: {
-        marginLeft: 10
-    },
-    searchIcon: {
-        backgroundColor: "inherit",
-        // fontSize: ".5rem",
-        color: "#606984",
-        width: 25,
-        height: 25,
-    },
-    textField: {
-        flex: 1,
-        color: "#9baec8"
+  headerText: {
+    marginLeft: 10
+  },
+  searchIcon: {
+    backgroundColor: "inherit",
+    // fontSize: ".5rem",
+    color: "#606984",
+    width: 25,
+    height: 25
+  },
+  textField: {
+    flex: 1,
+    color: "#9baec8"
+  },
 
-    },
+  avatar: {
+    backgroundColor: "inherit",
+    // fontSize: ".5rem",
+    color: "#9baec8",
+    width: 25,
+    height: 25
+  }
+}
 
-    avatar: {
-        backgroundColor: "inherit",
-        // fontSize: ".5rem",
-        color: "#9baec8",
-        width: 25,
-        height: 25,
-    }
+class SearchBar extends React.Component<any, any> {
+  state = {
+    val: ""
+  }
+  render() {
+    return (
+      <div className="searchBar">
+        <Input
+          placeholder="Search"
+          disableUnderline
+          // margin={"dense"}
+          onKeyDown={e => {
+            if (e.keyCode == 13) {
+              this.props.store.searchRepo("javascript", this.state.val)
+            }
+          }}
+          onChange={event => {
+            this.setState({ val: event.target.value })
+          }}
+          style={styles.textField}
+        />
+        <Avatar style={styles.searchIcon}>
+          <SearchIcon />
+        </Avatar>
+      </div>
+    )
+  }
 }
 
 class SideBar extends React.Component<any, any> {
@@ -59,37 +87,27 @@ class SideBar extends React.Component<any, any> {
     return (
       <div className="item">
         <div className="sidebarHeader">
-            <Avatar style={styles.avatar}>
-                <MenuIcon/>
-            </Avatar>
-            <Avatar style={styles.avatar}>
-                <HomeIcon/>
-            </Avatar>
-            <Avatar style={styles.avatar}>
-                <AllInbox/>
-            </Avatar>
-            <Avatar style={styles.avatar}>
-                <Announcement/>
-            </Avatar>
-            <Avatar style={styles.avatar}>
-                <Build/>
-            </Avatar>
+          <Avatar style={styles.avatar}>
+            <MenuIcon />
+          </Avatar>
+          <Avatar style={styles.avatar}>
+            <HomeIcon />
+          </Avatar>
+          <Avatar style={styles.avatar}>
+            <AllInbox />
+          </Avatar>
+          <Avatar style={styles.avatar}>
+            <Announcement />
+          </Avatar>
+          <Avatar style={styles.avatar}>
+            <Build />
+          </Avatar>
         </div>
-          <div className="searchBar">
-              <Input
-                  placeholder="Search"
-                  disableUnderline
-                  // margin={"dense"}
-                  style={styles.textField}
-              />
-              <Avatar style={styles.searchIcon}>
-                  <SearchIcon/>
-              </Avatar>
-          </div>
+
+        <SearchBar store={this.props.store} />
 
         <div className="contentHolder">
           <div className="content">
-
             <List component="nav">
               {newList.map(l => (
                 <ListItem
@@ -99,10 +117,13 @@ class SideBar extends React.Component<any, any> {
                   onClick={() => {
                     console.log("click")
                     // this.props.store.selectQuery(l.title)
-                      this.props.store.searchRepo(l.title)
+                    this.props.store.searchRepo(l.title)
                   }}
                 >
-                  <ListItemText primary={l.title} primaryTypographyProps={{color: "inherit"}}  />
+                  <ListItemText
+                    primary={l.title}
+                    primaryTypographyProps={{ color: "inherit" }}
+                  />
                 </ListItem>
               ))}
             </List>
