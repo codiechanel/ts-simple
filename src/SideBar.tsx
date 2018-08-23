@@ -6,12 +6,14 @@ import ListItemText from "@material-ui/core/ListItemText"
 import List from "@material-ui/core/List"
 import AccountBox from "@material-ui/icons/AccountBox"
 import AllInbox from "@material-ui/icons/AllInbox"
+import MenuIcon from "@material-ui/icons/Menu"
 import Announcement from "@material-ui/icons/Announcement"
 import Build from "@material-ui/icons/Build"
 
 import Avatar from "@material-ui/core/Avatar"
-import HomeIcon from "../node_modules/@material-ui/icons/Home"
-import SearchIcon from "../node_modules/@material-ui/icons/Search"
+import HomeIcon from "@material-ui/icons/Home"
+
+import SearchIcon from "@material-ui/icons/Search"
 import Typography from "@material-ui/core/Typography"
 import Input from "@material-ui/core/Input"
 
@@ -58,7 +60,7 @@ class SideBar extends React.Component<any, any> {
       <div className="item">
         <div className="sidebarHeader">
             <Avatar style={styles.avatar}>
-                <AccountBox/>
+                <MenuIcon/>
             </Avatar>
             <Avatar style={styles.avatar}>
                 <HomeIcon/>

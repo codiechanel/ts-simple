@@ -16,6 +16,9 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import HomeIcon from "@material-ui/icons/Home"
+import LaunchIcon from "@material-ui/icons/Launch"
+import TurnedInIcon from "@material-ui/icons/TurnedIn"
+import NotificationsIcon from "@material-ui/icons/Notifications"
 import StarIcon from "@material-ui/icons/StarRate"
 import UndoIcon from "@material-ui/icons/Undo"
 import MoreIcon from "@material-ui/icons/MoreHoriz"
@@ -151,6 +154,15 @@ class Home extends React.Component<any, any> {
                         </Avatar>
                         <Avatar style={styles.itemIcon}>
                             <RefreshIcon/>
+                        </Avatar>
+                        <Avatar style={styles.itemIcon}>
+                            <LaunchIcon/>
+                        </Avatar>
+                        <Avatar style={styles.itemIcon}>
+                            <TurnedInIcon/>
+                        </Avatar>
+                        <Avatar style={styles.itemIcon}>
+                            <NotificationsIcon/>
                         </Avatar>
                         <Avatar style={styles.itemIcon}>
                             <MoreIcon/>
