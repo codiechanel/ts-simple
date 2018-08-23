@@ -16,6 +16,8 @@ import HomeIcon from "@material-ui/icons/Home"
 import SearchIcon from "@material-ui/icons/Search"
 import Typography from "@material-ui/core/Typography"
 import Input from "@material-ui/core/Input"
+import axios from "axios"
+import { runInAction } from "mobx"
 
 let newList = []
 newList.push({ title: "javascript" })
@@ -83,6 +85,25 @@ class SearchBar extends React.Component<any, any> {
 }
 
 class SideBar extends React.Component<any, any> {
+  state = {
+    msg: "welcome"
+  }
+  componentDidMount() {
+    axios
+      .get("/.netlify/functions/hello")
+      .then(response => {
+        // handle success
+        console.log(response.data.title)
+        this.setState({ msg: response.data.title })
+      })
+      .catch(function(error) {
+        // handle error
+        console.log(error)
+      })
+      .then(function() {
+        // always executed
+      })
+  }
   render() {
     return (
       <div className="item">
@@ -108,6 +129,7 @@ class SideBar extends React.Component<any, any> {
 
         <div className="contentHolder">
           <div className="content">
+            <div>{this.state.msg}</div>
             <List component="nav">
               {newList.map(l => (
                 <ListItem

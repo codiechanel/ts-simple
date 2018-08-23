@@ -6,6 +6,8 @@
   "scripts": {
     "s": "ts-pack dev",
     "build": "ts-pack prod",
+    "build:lambda": "ts-pack build src/lambda",
+    "start:lambda": "ts-pack serve src/lambda",
     "test": "echo \"Error: no test specified\" && exit 1",
     "upgrade": "yarn upgrade --latest"
   },
