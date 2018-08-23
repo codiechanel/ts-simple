@@ -69,7 +69,7 @@ div::-webkit-scrollbar-thumb {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-  padding: 5px;
+  padding: 10px;
 }
 
 .header {
@@ -90,7 +90,7 @@ div::-webkit-scrollbar-thumb {
     /*justify-content: center;*/
     align-items: center;
     background-color: #313543;
-    padding: 5px;
+    padding: 10px;
 }
 .homeHeader {
   display: flex;
@@ -98,7 +98,7 @@ div::-webkit-scrollbar-thumb {
   /*justify-content: center;*/
   align-items: center;
   background-color: #313543;
-  padding: 5px;
+  padding: 10px;
 }
 
 .contentHolder {

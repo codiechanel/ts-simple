@@ -15,7 +15,7 @@ import CardContent from '@material-ui/core/CardContent';
 let newList = []
 newList.push({ title: "javascript" })
 newList.push({ title: "java" })
-// newList.push({ title: "python" })
+newList.push({ title: "python" })
 
 
 class DetailsHeader extends React.Component<any, any> {

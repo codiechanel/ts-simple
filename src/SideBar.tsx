@@ -21,6 +21,10 @@ newList.push({ title: "java" })
 newList.push({ title: "python" })
 newList.push({ title: "php" })
 newList.push({ title: "node" })
+newList.push({ title: "typescript" })
+newList.push({ title: "dart" })
+newList.push({ title: "html" })
+newList.push({ title: "css" })
 
 const styles = {
     headerText: {

@@ -17,7 +17,7 @@ import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import HomeIcon from "@material-ui/icons/Home"
 import Settings from "@material-ui/icons/Settings"
-import {observable} from "mobx"
+import { observable } from "mobx"
 
 // account_box
 
@@ -36,8 +36,16 @@ const styles = {
     marginLeft: 10,
     flex: 1
   },
+    avatarGrey: {
+        // backgroundColor: "#393f4f",
+        backgroundColor: "blue",
+        // fontSize: ".5rem",
+        width: 25,
+        height: 25
+    },
   avatar: {
     backgroundColor: "inherit",
+
     // fontSize: ".5rem",
     width: 25,
     height: 25
@@ -45,16 +53,13 @@ const styles = {
 }
 
 class HomeStore {
-    // repos = observable.shallow(new Map());
-    showOptions = observable.box(false)
+  showOptions = observable.box(false)
   setOption(val) {
-      this.showOptions.set(val)
+    this.showOptions.set(val)
   }
 }
 const homeStore = new HomeStore()
 
-const url =
-  "https://api.github.com/search/repositories?l=javascript&q=stars%3A%3E1&s=stars&type=Repositories"
 @observer
 class Home extends React.Component<any, any> {
   state = {
@@ -72,31 +77,39 @@ class Home extends React.Component<any, any> {
      */
 
     let list: any = Array.from(arr)
-      let optionsUI = null
-      if (homeStore.showOptions.get()) {
-          optionsUI = <div style={{backgroundColor:"#393f4f", padding: 5}}>Great</div>
-      }
+    let optionsUI = null
+      let curr = homeStore.showOptions.get()
+    if (curr) {
+      optionsUI = (
+        <div style={{ backgroundColor: "#393f4f", padding: 5 }}>Great</div>
+      )
+    }
 
     return (
       <div className="item">
         <div className="homeHeader">
-          <Avatar style={styles.avatar}>
+          <Avatar style={styles.avatar} >
             <HomeIcon />
           </Avatar>
           <Typography variant="body2" color="inherit" style={styles.headerText}>
             Home
           </Typography>
-          <Avatar style={styles.avatar} onClick={()=> {
-            let curr = homeStore.showOptions.get()
-              homeStore.setOption(!curr)
-            console.log('ss')
-          }} >
-            <Settings  />
-          </Avatar>
-        </div>
-          {optionsUI}
-        <div className="contentHolder">
+          <div style={{backgroundColor:curr ? "#393f4f": "#313543"}}>
 
+
+          <Avatar
+              style={styles.avatar}
+            onClick={() => {
+
+              homeStore.setOption(!curr)
+            }}
+          >
+            <Settings />
+          </Avatar>
+          </div>
+        </div>
+        {optionsUI}
+        <div className="contentHolder">
           <div className="content">
             <List component="nav" style={{ color: "white" }}>
               {list.map(l => (
