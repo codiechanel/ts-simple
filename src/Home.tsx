@@ -168,9 +168,15 @@ class Home extends React.Component<any, any> {
                     this.props.store.selectRepo(l.id)
                   }}
                 >
-                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <Avatar alt="Remy Sharp" src={l.owner.avatar_url} />
+                  <div style={{ marginLeft: 5,  display: "flex", flexDirection: "column" }}>
                     <ListItemText
                       primary={l.name}
+                      primaryTypographyProps={{ color: "inherit" }}
+                    />
+                    <div style={{ color: "#606984" }}>@{l.owner.login}</div>
+                    <ListItemText
+                      primary={l.description}
                       primaryTypographyProps={{ color: "inherit" }}
                     />
                     <div style={{ display: "flex", flexDirection: "row" }}>
