@@ -168,7 +168,7 @@ class Details extends React.Component<any, any> {
             </div>
 
             <div style={{ backgroundColor: "#1f232b", padding: 5 }}>
-              Repositories
+              Repositories | Contributors
             </div>
 
             <div style={{ display: "flex", flex: 1 }}>

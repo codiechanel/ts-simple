@@ -16,8 +16,13 @@ import ListItem from "@material-ui/core/ListItem"
 import ListItemIcon from "@material-ui/core/ListItemIcon"
 import ListItemText from "@material-ui/core/ListItemText"
 import HomeIcon from "@material-ui/icons/Home"
+import StarIcon from "@material-ui/icons/StarRate"
+import UndoIcon from "@material-ui/icons/Undo"
+import MoreIcon from "@material-ui/icons/MoreHoriz"
+import RefreshIcon from "@material-ui/icons/Refresh"
 import Settings from "@material-ui/icons/Settings"
 import { observable } from "mobx"
+import DetailsIcon from "../node_modules/@material-ui/icons/Details"
 
 // account_box
 
@@ -39,6 +44,14 @@ const styles = {
     avatarGrey: {
         // backgroundColor: "#393f4f",
         backgroundColor: "blue",
+        // fontSize: ".5rem",
+        width: 25,
+        height: 25
+    },
+    itemIcon: {
+        backgroundColor: "inherit",
+        color: "#606984",
+
         // fontSize: ".5rem",
         width: 25,
         height: 25
@@ -123,10 +136,27 @@ class Home extends React.Component<any, any> {
                     this.props.store.selectRepo(l.id)
                   }}
                 >
+                  <div style={{display: "flex", flexDirection:"column"}}>
                   <ListItemText
                     primary={l.name}
                     primaryTypographyProps={{ color: "inherit" }}
                   />
+                    <div style={{display: "flex", flexDirection:"row"}}>
+
+                        <Avatar style={styles.itemIcon}>
+                            <StarIcon/>
+                        </Avatar>
+                        <Avatar style={styles.itemIcon}>
+                            <UndoIcon/>
+                        </Avatar>
+                        <Avatar style={styles.itemIcon}>
+                            <RefreshIcon/>
+                        </Avatar>
+                        <Avatar style={styles.itemIcon}>
+                            <MoreIcon/>
+                        </Avatar>
+                    </div>
+                  </div>
                 </ListItem>
               ))}
             </List>
