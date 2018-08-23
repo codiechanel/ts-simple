@@ -9,14 +9,15 @@ import Settings from "../node_modules/@material-ui/icons/Settings"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import Card from "@material-ui/core/Card"
+import CardActions from "@material-ui/core/CardActions"
+import CardContent from "@material-ui/core/CardContent"
 let newList = []
 newList.push({ title: "javascript" })
 newList.push({ title: "java" })
 newList.push({ title: "python" })
-
+newList.push({ title: "html" })
+newList.push({ title: "node" })
 
 class DetailsHeader extends React.Component<any, any> {
   render() {
@@ -59,7 +60,10 @@ class RepoStats extends React.Component<any, any> {
         backgroundColor: "#282c37",
         borderStyle: "solid",
         color: "#9baec8",
-        width: 100
+        width: 100,
+        flex: 1,
+        display: "flex",
+        flexDirection: "col"
         // textAlign: "center"
       },
       bigAvatar: {
@@ -69,7 +73,7 @@ class RepoStats extends React.Component<any, any> {
     }
     return (
       <div className={style.cool}>
-        <div style={styles.boxes}>
+        <div className={style.boxes}>
           <span
             style={{
               display: "block",
@@ -92,7 +96,7 @@ class RepoStats extends React.Component<any, any> {
             </span>
           </strong>
         </div>
-        <div style={styles.boxes}>
+        <div className={style.boxes}>
           <span
             style={{
               display: "block",
@@ -151,39 +155,24 @@ class Details extends React.Component<any, any> {
                 src={item.owner.avatar_url}
                 style={styles.bigAvatar}
               />
-              <div style={{ fontSize: 20, textAlign: "center" }}>
+              <div style={{ fontSize: 20 }}>
                 {item.name}
               </div>
-              <div style={{ color: "#2b90d9", textAlign: "center" }}>
-                @{item.owner.login}
-              </div>
+              <div style={{ color: "#2b90d9" }}>@{item.owner.login}</div>
 
-              <div style={{ textAlign: "center" }}> {item.description}</div>
-              <RepoStats
-                stars={item.stargazers_count.toLocaleString()}
-                forks={item.forks_count.toLocaleString()}
-              />
+              <div > {item.description}</div>
+                <RepoStats
+                    stars={item.stargazers_count.toLocaleString()}
+                    forks={item.forks_count.toLocaleString()}
+                />
             </div>
+
             <div style={{ backgroundColor: "#1f232b", padding: 5 }}>
               Repositories
             </div>
-              {/*<Card >*/}
-                  {/*<CardContent>*/}
-                      {/*<List >*/}
-                          {/*{newList.map(l => (*/}
-                              {/*<ListItem button divider key={l.title}>*/}
-                                  {/*<ListItemText*/}
-                                      {/*primary={l.title}*/}
-                                      {/*primaryTypographyProps={{ color: "inherit" }}*/}
-                                  {/*/>*/}
-                              {/*</ListItem>*/}
-                          {/*))}*/}
-                      {/*</List>*/}
-                  {/*</CardContent>*/}
 
-              {/*</Card>*/}
-            <div>
-              <List >
+            <div style={{ display: "flex", flex: 1 }}>
+              <List>
                 {newList.map(l => (
                   <ListItem button divider key={l.title}>
                     <ListItemText

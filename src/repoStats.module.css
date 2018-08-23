@@ -2,4 +2,18 @@
     /*background-color: aqua;*/
     display: flex;
     flex-direction: row;
+    /*height: 100%;*/
+    /*flex: 1;*/
+}
+
+.boxes {
+    border-color: #363c4b;
+    background-color: #282c37;
+    border-style: solid;
+    color: #9baec8;
+    width: 100px;
+    /*height: 100%;*/
+    /*flex: 1;*/
+    display: flex;
+    flex-direction: column;
 }
