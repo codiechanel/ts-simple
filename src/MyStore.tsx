@@ -2,17 +2,9 @@ import { observable, runInAction } from "mobx"
 import axios from "axios" // 3.4.1
 
 class Store {
-  // repos = observable.shallow(new Map());
   repos = observable.map(new Map(), { deep: false })
   contributors = observable.map(new Map(), { deep: false })
   selectedRepo = observable.box(null)
-  selectedQuery = observable.box(null)
-
-  selectQuery(query) {
-    runInAction(() => {
-      this.selectedQuery.set(query)
-    })
-  }
 
   getContributors(fullname) {
     const url = `https://api.github.com/repos/${fullname}/contributors`
