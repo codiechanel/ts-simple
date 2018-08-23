@@ -130,7 +130,7 @@ class RepoStats extends React.Component<any, any> {
               textAlign: "center"
             }}
           >
-            watchers
+            issues
           </span>
           <strong>
             <span
@@ -140,7 +140,7 @@ class RepoStats extends React.Component<any, any> {
                 textAlign: "center"
               }}
             >
-              {this.props.watchers}
+              {this.props.issues}
             </span>
           </strong>
         </div>
@@ -160,7 +160,7 @@ class Details extends React.Component<any, any> {
     }
     let val = this.props.store.selectedRepo.get()
     let item = this.props.store.repos.get(val)
-    console.log("val", val, item)
+
     let content = (
       <div className="item">
         <DetailsHeader />
@@ -187,12 +187,12 @@ class Details extends React.Component<any, any> {
               <RepoStats
                 stars={item.stargazers_count.toLocaleString()}
                 forks={item.forks_count.toLocaleString()}
-                watchers={item.score.toLocaleString()}
+                issues={item.open_issues.toLocaleString()}
               />
             </div>
 
             <div style={{ backgroundColor: "#1f232b", padding: 5 }}>
-              Repositories | Contributors
+              Contributors
             </div>
 
             <div style={{ display: "flex", flex: 1 }}>
