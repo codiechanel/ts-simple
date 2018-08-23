@@ -38,7 +38,7 @@ class Store {
 
   selectRepo(id) {
     runInAction(() => {
-        this.contributors.clear()
+      this.contributors.clear()
       this.selectedRepo.set(id)
     })
     let val = this.repos.get(id)
@@ -46,8 +46,6 @@ class Store {
   }
 
   searchRepo(language, query = null) {
-    console.log(language)
-    // const url = `https://api.github.com/search/repositories?language=${query}&q=stars%3A%3E1&s=stars&type=Repositories`
     let url = `https://api.github.com/search/repositories?q=stars%3A%3E1+language:${language}&sort=stars&order=desc`
     if (query) {
       url = `https://api.github.com/search/repositories?q=${query}+language:${language}&sort=stars&order=desc`
@@ -58,10 +56,9 @@ class Store {
       .then(response => {
         // handle success
         runInAction(() => {
-
           this.contributors.clear()
           this.repos.clear()
-            this.selectedRepo.set(null)
+          this.selectedRepo.set(null)
 
           for (let x of response.data.items) {
             this.repos.set(x.id, x)
