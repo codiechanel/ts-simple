@@ -24,6 +24,9 @@ import UndoIcon from "@material-ui/icons/Undo"
 import MoreIcon from "@material-ui/icons/MoreHoriz"
 import RefreshIcon from "@material-ui/icons/Refresh"
 import Settings from "@material-ui/icons/Settings"
+import FormGroup from "@material-ui/core/FormGroup"
+import FormControlLabel from "@material-ui/core/FormControlLabel"
+import Switch from "@material-ui/core/Switch"
 import { observable } from "mobx"
 import DetailsIcon from "../node_modules/@material-ui/icons/Details"
 
@@ -44,21 +47,21 @@ const styles = {
     marginLeft: 10,
     flex: 1
   },
-    avatarGrey: {
-        // backgroundColor: "#393f4f",
-        backgroundColor: "blue",
-        // fontSize: ".5rem",
-        width: 25,
-        height: 25
-    },
-    itemIcon: {
-        backgroundColor: "inherit",
-        color: "#606984",
+  avatarGrey: {
+    // backgroundColor: "#393f4f",
+    backgroundColor: "blue",
+    // fontSize: ".5rem",
+    width: 25,
+    height: 25
+  },
+  itemIcon: {
+    backgroundColor: "inherit",
+    color: "#606984",
 
-        // fontSize: ".5rem",
-        width: 25,
-        height: 25
-    },
+    // fontSize: ".5rem",
+    width: 25,
+    height: 25
+  },
   avatar: {
     backgroundColor: "inherit",
 
@@ -94,34 +97,60 @@ class Home extends React.Component<any, any> {
 
     let list: any = Array.from(arr)
     let optionsUI = null
-      let curr = homeStore.showOptions.get()
+    let curr = homeStore.showOptions.get()
     if (curr) {
       optionsUI = (
-        <div style={{ backgroundColor: "#393f4f", padding: 5 }}>Great</div>
+        <div style={{ backgroundColor: "#393f4f", padding: 10 }}>
+          <div style={{ color: "9baec8" }}>Basic</div>
+
+          <FormGroup row>
+            <FormControlLabel
+              control={<Switch checked={false} value="checkedA" />}
+              label="Secondary"
+            />
+            <FormControlLabel
+              control={
+                <Switch checked={true} value="checkedB" color="primary" />
+              }
+              label="Primary"
+            />
+            <FormControlLabel
+              control={<Switch value="checkedC" />}
+              label="Uncontrolled"
+            />
+            <FormControlLabel
+              disabled
+              control={<Switch value="checkedD" />}
+              label="Disabled"
+            />
+            <FormControlLabel
+              disabled
+              control={<Switch checked value="checkedE" />}
+              label="Disabled"
+            />
+          </FormGroup>
+        </div>
       )
     }
 
     return (
       <div className="item">
         <div className="homeHeader">
-          <Avatar style={styles.avatar} >
+          <Avatar style={styles.avatar}>
             <HomeIcon />
           </Avatar>
           <Typography variant="body2" color="inherit" style={styles.headerText}>
             Home
           </Typography>
-          <div style={{backgroundColor:curr ? "#393f4f": "#313543"}}>
-
-
-          <Avatar
+          <div style={{ backgroundColor: curr ? "#393f4f" : "#313543" }}>
+            <Avatar
               style={styles.avatar}
-            onClick={() => {
-
-              homeStore.setOption(!curr)
-            }}
-          >
-            <Settings />
-          </Avatar>
+              onClick={() => {
+                homeStore.setOption(!curr)
+              }}
+            >
+              <Settings />
+            </Avatar>
           </div>
         </div>
         {optionsUI}
@@ -139,34 +168,33 @@ class Home extends React.Component<any, any> {
                     this.props.store.selectRepo(l.id)
                   }}
                 >
-                  <div style={{display: "flex", flexDirection:"column"}}>
-                  <ListItemText
-                    primary={l.name}
-                    primaryTypographyProps={{ color: "inherit" }}
-                  />
-                    <div style={{display: "flex", flexDirection:"row"}}>
-
-                        <Avatar style={styles.itemIcon}>
-                            <StarIcon/>
-                        </Avatar>
-                        <Avatar style={styles.itemIcon}>
-                            <UndoIcon/>
-                        </Avatar>
-                        <Avatar style={styles.itemIcon}>
-                            <RefreshIcon/>
-                        </Avatar>
-                        <Avatar style={styles.itemIcon}>
-                            <LaunchIcon/>
-                        </Avatar>
-                        <Avatar style={styles.itemIcon}>
-                            <TurnedInIcon/>
-                        </Avatar>
-                        <Avatar style={styles.itemIcon}>
-                            <NotificationsIcon/>
-                        </Avatar>
-                        <Avatar style={styles.itemIcon}>
-                            <MoreIcon/>
-                        </Avatar>
+                  <div style={{ display: "flex", flexDirection: "column" }}>
+                    <ListItemText
+                      primary={l.name}
+                      primaryTypographyProps={{ color: "inherit" }}
+                    />
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      <Avatar style={styles.itemIcon}>
+                        <StarIcon />
+                      </Avatar>
+                      <Avatar style={styles.itemIcon}>
+                        <UndoIcon />
+                      </Avatar>
+                      <Avatar style={styles.itemIcon}>
+                        <RefreshIcon />
+                      </Avatar>
+                      <Avatar style={styles.itemIcon}>
+                        <LaunchIcon />
+                      </Avatar>
+                      <Avatar style={styles.itemIcon}>
+                        <TurnedInIcon />
+                      </Avatar>
+                      <Avatar style={styles.itemIcon}>
+                        <NotificationsIcon />
+                      </Avatar>
+                      <Avatar style={styles.itemIcon}>
+                        <MoreIcon />
+                      </Avatar>
                     </div>
                   </div>
                 </ListItem>
