@@ -1,7 +1,6 @@
 import * as React from "react"
 import * as ReactDOM from "react-dom"
 import { observer } from "mobx-react"
-
 import axios from "axios"
 import AppBar from "@material-ui/core/AppBar"
 import Toolbar from "@material-ui/core/Toolbar"
@@ -31,6 +30,7 @@ import Switch from "@material-ui/core/Switch"
 import { observable } from "mobx"
 import DetailsIcon from "../node_modules/@material-ui/icons/Details"
 
+import * as commonStyle from './common.module.css'
 // account_box
 
 const styles = {
@@ -64,8 +64,7 @@ const styles = {
     height: 25
   },
   avatar: {
-    backgroundColor: "inherit",
-
+    // backgroundColor: "inherit",
     // fontSize: ".5rem",
     width: 25,
     height: 25
@@ -137,21 +136,22 @@ class Home extends React.Component<any, any> {
     return (
       <div className="item">
         <div className="homeHeader">
-          <Avatar style={styles.avatar}>
+          <IconButton className={commonStyle.iconSmall} style={{color:"white"}}>
             <HomeIcon />
-          </Avatar>
-          <Typography variant="body2" color="inherit" style={styles.headerText}>
+          </IconButton>
+          <Typography variant="body2"  style={styles.headerText}>
             Home
           </Typography>
           <div style={{ backgroundColor: curr ? "#393f4f" : "#313543" }}>
-            <Avatar
-              style={styles.avatar}
+            <IconButton
+                color={"primary"}
+              className={commonStyle.iconSmall}
               onClick={() => {
                 homeStore.setOption(!curr)
               }}
             >
               <Settings />
-            </Avatar>
+            </IconButton>
           </div>
         </div>
         {optionsUI}
@@ -181,30 +181,30 @@ class Home extends React.Component<any, any> {
                       primaryTypographyProps={{ color: "inherit" }}
                     />
                     <div style={{ display: "flex", flexDirection: "row" }}>
-                      <Avatar style={styles.itemIcon}>
+                      <IconButton color={"primary"} className={commonStyle.iconSmall}>
                         <StarIcon />
-                      </Avatar>
-                      <Avatar style={styles.itemIcon}>
-                        <UndoIcon />
-                      </Avatar>
-                      <Avatar style={styles.itemIcon}>
-                        <RefreshIcon />
-                      </Avatar>
-                        <Avatar style={styles.itemIcon}>
-                            <PlusOneIcon/>
-                        </Avatar>
-                      <Avatar style={styles.itemIcon}>
-                        <LaunchIcon />
-                      </Avatar>
-                      <Avatar style={styles.itemIcon}>
-                        <TurnedInIcon />
-                      </Avatar>
-                      <Avatar style={styles.itemIcon}>
-                        <NotificationsIcon />
-                      </Avatar>
-                      <Avatar style={styles.itemIcon}>
-                        <MoreIcon />
-                      </Avatar>
+                      </IconButton>
+                      {/*<Avatar style={styles.itemIcon}>*/}
+                        {/*<UndoIcon />*/}
+                      {/*</Avatar>*/}
+                      {/*<Avatar style={styles.itemIcon}>*/}
+                        {/*<RefreshIcon />*/}
+                      {/*</Avatar>*/}
+                        {/*<Avatar style={styles.itemIcon}>*/}
+                            {/*<PlusOneIcon/>*/}
+                        {/*</Avatar>*/}
+                      {/*<Avatar style={styles.itemIcon}>*/}
+                        {/*<LaunchIcon />*/}
+                      {/*</Avatar>*/}
+                      {/*<Avatar style={styles.itemIcon}>*/}
+                        {/*<TurnedInIcon />*/}
+                      {/*</Avatar>*/}
+                      {/*<Avatar style={styles.itemIcon}>*/}
+                        {/*<NotificationsIcon />*/}
+                      {/*</Avatar>*/}
+                      {/*<Avatar style={styles.itemIcon}>*/}
+                        {/*<MoreIcon />*/}
+                      {/*</Avatar>*/}
                     </div>
                   </div>
                 </ListItem>

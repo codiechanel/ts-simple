@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography"
 import HomeIcon from "@material-ui/icons/Home"
 import DetailsIcon from "@material-ui/icons/Details"
 import Settings from "../node_modules/@material-ui/icons/Settings"
+import IconButton from "@material-ui/core/IconButton"
 import List from "@material-ui/core/List"
 import ListItem from "@material-ui/core/ListItem"
 import ListItemText from "@material-ui/core/ListItemText"
@@ -13,6 +14,9 @@ import Card from "@material-ui/core/Card"
 import CardActions from "@material-ui/core/CardActions"
 import CardContent from "@material-ui/core/CardContent"
 import Contributors from "./Contributors"
+
+import * as commonStyle from './common.module.css'
+
 let newList = []
 newList.push({ title: "javascript" })
 newList.push({ title: "java" })
@@ -36,15 +40,15 @@ class DetailsHeader extends React.Component<any, any> {
     }
     return (
       <div className="detailsHeader">
-        <Avatar style={styles.avatar}>
+        <IconButton style={{color:"white"}} className={commonStyle.iconSmall}>
           <DetailsIcon />
-        </Avatar>
-        <Typography variant="body2" color="inherit" style={styles.headerText}>
+        </IconButton>
+        <Typography variant="body2" style={styles.headerText}>
           Details
         </Typography>
-        <Avatar style={styles.avatar}>
+        <IconButton color={"primary"} className={commonStyle.iconSmall}>
           <Settings />
-        </Avatar>
+        </IconButton>
       </div>
     )
   }
@@ -170,6 +174,7 @@ class Details extends React.Component<any, any> {
       </div>
     )
     if (item) {
+        console.log(item)
       content = (
         <div className="item">
           <DetailsHeader />
@@ -181,9 +186,19 @@ class Details extends React.Component<any, any> {
                 style={styles.bigAvatar}
               />
               <div style={{ fontSize: 20 }}>{item.name}</div>
-              <div style={{ color: "#2b90d9" }}>@{item.owner.login}</div>
+              {/*<div style={{ color: "#2b90d9" }}>@{item.owner.login}</div>*/}
 
-              <div> {item.description}</div>
+                {item.html_url && (
+                    <div
+                        style={{ color: "#2b90d9" }}
+                        onClick={() => {
+                            window.open(item.html_url, "_blank")
+                        }}
+                    >
+                        @{item.full_name}
+                    </div>
+                )}
+              <div style={{margin:5}}> {item.description}</div>
               <RepoStats
                 stars={item.stargazers_count.toLocaleString()}
                 forks={item.forks_count.toLocaleString()}

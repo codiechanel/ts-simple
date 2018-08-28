@@ -9,7 +9,7 @@ import AllInbox from "@material-ui/icons/AllInbox"
 import MenuIcon from "@material-ui/icons/Menu"
 import Announcement from "@material-ui/icons/Announcement"
 import Build from "@material-ui/icons/Build"
-
+import IconButton from "@material-ui/core/IconButton"
 import Avatar from "@material-ui/core/Avatar"
 import HomeIcon from "@material-ui/icons/Home"
 
@@ -18,6 +18,8 @@ import Typography from "@material-ui/core/Typography"
 import Input from "@material-ui/core/Input"
 import axios from "axios"
 import { runInAction } from "mobx"
+
+import * as commonStyle from './common.module.css'
 
 let newList = []
 newList.push({ title: "javascript" })
@@ -76,9 +78,9 @@ class SearchBar extends React.Component<any, any> {
           }}
           style={styles.textField}
         />
-        <Avatar style={styles.searchIcon}>
+        <IconButton color={"primary"} className={commonStyle.iconSmall}>
           <SearchIcon />
-        </Avatar>
+        </IconButton>
       </div>
     )
   }
@@ -108,21 +110,21 @@ class SideBar extends React.Component<any, any> {
     return (
       <div className="item">
         <div className="sidebarHeader">
-          <Avatar style={styles.avatar}>
+          <IconButton style={{color:"white"}} className={commonStyle.iconSmall}>
             <MenuIcon />
-          </Avatar>
-          <Avatar style={styles.avatar}>
+          </IconButton>
+          <IconButton color={"secondary"} className={commonStyle.iconSmall}>
             <HomeIcon />
-          </Avatar>
-          <Avatar style={styles.avatar}>
+          </IconButton>
+          <IconButton color={"secondary"} className={commonStyle.iconSmall}>
             <AllInbox />
-          </Avatar>
-          <Avatar style={styles.avatar}>
+          </IconButton>
+          <IconButton color={"secondary"} className={commonStyle.iconSmall}>
             <Announcement />
-          </Avatar>
-          <Avatar style={styles.avatar}>
+          </IconButton>
+          <IconButton color={"secondary"} className={commonStyle.iconSmall}>
             <Build />
-          </Avatar>
+          </IconButton>
         </div>
 
         <SearchBar store={this.props.store} />
