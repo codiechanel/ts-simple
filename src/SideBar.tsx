@@ -91,20 +91,7 @@ class SideBar extends React.Component<any, any> {
     msg: "welcome"
   }
   componentDidMount() {
-    axios
-      .get("/.netlify/functions/hello")
-      .then(response => {
-        // handle success
-        console.log(response.data.title)
-        this.setState({ msg: response.data.title })
-      })
-      .catch(function(error) {
-        // handle error
-        console.log(error)
-      })
-      .then(function() {
-        // always executed
-      })
+
   }
   render() {
     return (

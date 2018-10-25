@@ -9,7 +9,6 @@ import SideBar from "./SideBar"
 import Home from "./Home"
 import Details from "./Details"
 import store from "./MyStore"
-
 const generateClassName = createGenerateClassName()
 const jss = create(jssPreset())
 /**
@@ -35,9 +34,11 @@ const theme = createMuiTheme({
   }
 })
 
+
 console.log(theme)
 class App extends React.Component<any, any> {
   componentDidMount() {
+    store.makeRquest().then()
     store.searchRepo("javascript", "podcast")
   }
   render() {
